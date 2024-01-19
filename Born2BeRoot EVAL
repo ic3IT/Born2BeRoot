@@ -62,3 +62,69 @@
         Ensure the script is set to run every 10 minutes after server start.
         Modify to run every minute, then stop it without altering the script itself.
         Restart server and verify the script’s existence, permissions, and unaltered state.
+
+
+
+
+
+
+
+
+
+    Check for Non-Graphical Environment:
+        Upon VM startup, observe if it loads into a command-line interface (CLI) instead of a graphical user interface (GUI).
+
+    Verify Operating System:
+        For Rocky, enter cat /etc/redhat-release in the terminal.
+        For Debian, use cat /etc/debian_version.
+
+    SELinux, DNF, Aptitude, Apt, AppArmor:
+        For Rocky:
+            Check SELinux status: sestatus.
+            Verify DNF: dnf --version.
+        For Debian:
+            Compare Aptitude and Apt: Check versions with aptitude --version and apt --version.
+            Check AppArmor: sudo aa-status.
+
+    Simple Setup Checks:
+        Verify non-GUI startup: Observe interface on boot.
+        Non-root login: Ensure you log in with a user account, not root.
+        Check UFW/Firewalld and SSH:
+            UFW (Debian): sudo ufw status.
+            Firewalld (Rocky): sudo firewall-cmd --state.
+            SSH: sudo systemctl status ssh.
+
+    User Configuration Verification:
+        Check existing user: id [username].
+        Test password policy: Try setting a new password with passwd [newuser].
+        Check groups: groups [newuser].
+        Create and assign "evaluating" group: sudo groupadd evaluating and sudo usermod -aG evaluating [newuser].
+
+    Hostname and Partitions:
+        Confirm hostname: hostname.
+        Change hostname: sudo hostnamectl set-hostname [newhostname], then reboot and check again.
+        View partitions: Use lsblk or fdisk -l.
+        Discuss LVM: Use lvdisplay or vgdisplay.
+
+    SUDO Setup:
+        Verify sudo: sudo -V.
+        Add user to sudo: sudo usermod -aG sudo [newuser].
+        Show sudo usage: Look at /etc/sudoers or demonstrate with sudo [command].
+        Check log: cat /var/log/sudo/*.
+
+    UFW / Firewalld:
+        Check firewall status: UFW - sudo ufw status, Firewalld - sudo firewall-cmd --state.
+        List rules: UFW - sudo ufw status numbered, Firewalld - sudo firewall-cmd --list-all.
+        Add/remove rule: UFW - sudo ufw allow/deny 8080, Firewalld - sudo firewall-cmd --add-port=8080/tcp --permanent and sudo firewall-cmd --reload.
+
+    SSH Configuration:
+        Check SSH service: sudo systemctl status ssh.
+        Verify port 4242: Check /etc/ssh/sshd_config for Port 4242.
+        Test SSH login: ssh [newuser]@[IP-address] -p 4242.
+        Ensure root login is disabled: In sshd_config, PermitRootLogin should be no.
+
+    Script Monitoring:
+        Have the student explain the script: Review the script code.
+        Check cron setup: crontab -l for the student's cron jobs.
+        Modify script timing: Edit the cron job with crontab -e.
+        Restart and check: Restart the VM, then check the script’s status with ls -l [script path] and its settings in the cron job list.
