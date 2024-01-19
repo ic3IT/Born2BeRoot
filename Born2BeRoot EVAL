@@ -1,0 +1,64 @@
+    How a Virtual Machine Works:
+        A virtual machine is like a computer inside your computer. It uses software to create a virtual environment that acts like a separate computer, allowing you to run different operating systems or apps in isolated spaces.
+
+    Choice of Operating System:
+        This depends on personal preference, requirements, and compatibility. Rocky is known for its stability and enterprise focus, while Debian is popular for its wide community support and vast package repository.
+
+    Basic Differences Between Rocky and Debian:
+        Rocky: Based on Red Hat Enterprise Linux, focuses on stability and enterprise use.
+        Debian: Community-driven, known for its large software repository and stability.
+
+    Purpose of Virtual Machines:
+        Virtual machines are used to run multiple operating systems on one physical machine, test software in safe environments, and efficiently use hardware resources.
+
+    For Rocky - SELinux and DNF:
+        SELinux: A security module in Linux that provides extra layers of security policies.
+        DNF: A package manager for installing, updating, and managing software packages in Rocky.
+
+    For Debian - Difference Between Aptitude and Apt, and What is AppArmor:
+        Aptitude vs Apt: Both are package managers. Aptitude has a GUI and more features, while Apt is more straightforward and command-line based.
+        AppArmor: A security module for Linux, similar to SELinux, that helps to limit the capabilities of programs.
+
+
+
+    Simple Setup:
+        Verify the virtual machine has no graphical environment at startup.
+        Ensure connection is password-protected and not using the root user.
+        Confirm UFW (Uncomplicated Firewall) and SSH (Secure Shell) services are started.
+
+    User:
+        Check the presence of a user with the login of the student, in the "sudo" and "user42" groups.
+        Test the password policy by creating a new user and assigning a compliant password.
+        Have the student create a "evaluating" group and assign the new user to it.
+        Discuss the advantages and implementation challenges of the password policy.
+
+    Hostname and Partitions:
+        Confirm the machine's hostname follows the format "login42".
+        Change the hostname, restart the machine, and check the update.
+        Ask about viewing partitions and compare with subject's example.
+        Discuss LVM (Logical Volume Manager) basics and functionality.
+
+    SUDO:
+        Ensure "sudo" is installed and functioning.
+        Add your new user to the "sudo" group.
+        Discuss sudo's purpose and show implementation of the subject's rules.
+        Check "/var/log/sudo/" for command history and test updating it with a new sudo command.
+
+    UFW / Firewalld:
+        Verify installation and operation of UFW (or Firewalld for Rocky).
+        Understand UFW/Firewalld basics and importance.
+        Review active rules, especially for port 4242.
+        Add and then remove a rule for port 8080.
+
+    SSH:
+        Confirm SSH service installation and proper functioning.
+        Discuss basic understanding of SSH and its use.
+        Check that SSH operates only on port 4242.
+        Test SSH login with the new user, ensuring root login is disabled.
+
+    Script Monitoring:
+        Have the student explain their script and how it operates.
+        Learn what "cron" is and its role.
+        Ensure the script is set to run every 10 minutes after server start.
+        Modify to run every minute, then stop it without altering the script itself.
+        Restart server and verify the script’s existence, permissions, and unaltered state.
