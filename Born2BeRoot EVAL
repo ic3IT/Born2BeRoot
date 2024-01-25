@@ -25,7 +25,8 @@
     User Configuration Verification:
         Check existing user: id [username].
         Test password policy: Try setting a new password with passwd [newuser].
-        Check groups: groups [newuser].
+        Check groups: groups [newuser]. sudo usermod -a -G groupname username
+
         Create and assign "evaluating" group: sudo groupadd evaluating and sudo usermod -aG evaluating [newuser].
 
     Hostname and Partitions:
